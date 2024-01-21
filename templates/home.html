@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash for Cars</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 10px; /* Added margin-top for better spacing */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Cash for Cars</h1>
+    <p>Buy and sell cars easily with our platform!</p>
+
+    {% if cars %}
+        <ul>
+            {% for car in cars %}
+                <li>
+                    <strong>{{ car['make'] }} {{ car['model'] }}</strong>
+                    <br>
+                    Price: {{ car['price'] }}
+                    <br>
+                    Contact: {{ car['contact_info'] }}
+                    {% if car['photo'] %}
+                        <br>
+                        <!-- Debugging information -->
+                        
+                        <!-- Display the image -->
+                        <img src="{{ url_for('static', filename='uploads/' + car['photo']) }}" alt="Car Photo">
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No cars posted yet.</p>
+    {% endif %}
+
+    <p><a href="{{ url_for('signup') }}">Sign Up</a> or <a href="{{ url_for('login') }}">Login</a></p>
+</body>
+</html>

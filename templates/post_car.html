@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Posted Cars</title>
+</head>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 20px;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    p {
+        color: #888;
+    }
+</style>
+<body>
+
+    <h1>Post Your Car</h1>
+    <form method="post" action="{{ url_for('post_car') }}" enctype="multipart/form-data">
+        <label for="make">Make:</label>
+        <input type="text" name="make" required>
+        <br>
+        <label for="model">Model:</label>
+        <input type="text" name="model" required>
+        <br>
+        <label for="price">Price:</label>
+        <input type="text" name="price" required>
+        <br>
+        <label for="contact_info">Contact Information:</label>
+        <input type="text" name="contact_info" required>
+        <br>
+        <label for="photo">Upload Photo:</label>
+        <input type="file" name="photo" accept="image/*">
+        <br>
+        <input type="submit" value="Post Car"> 
+        <button class="post-button" onclick="location.href='{{ url_for('view_cars') }}'">View Cars</button>
+    </form>
+</body>
+</html>
